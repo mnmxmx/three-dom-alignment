@@ -1,15 +1,13 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const entry = {};
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: (process.env.NODE_ENV === 'production') ? 'production' : "development", //
     entry: './js/main.js',
     output: {
         filename: 'main.min.js',
+        publicPath: 'http://localhost:3000/',
         path: __dirname + "/dist"
     },
     module: {
@@ -50,10 +48,9 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                  // Creates `style` nodes from JS strings
-                    { loader: MiniCssExtractPlugin.loader },
-                    { loader: 'css-loader' },
-                    { loader: 'sass-loader' }
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader",
                 ],
               },
             // {
