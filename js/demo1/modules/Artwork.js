@@ -18,6 +18,10 @@ export default class Artwork{
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(this.fov, this.aspect, 0.01, 10000);
 
+        this.isCameraFixed = false;
+
+        this.cameraZ = 300;
+
         this.time = 0;
         this.delta = 0;
 
@@ -65,13 +69,21 @@ export default class Artwork{
         this.renderer.setSize(this.dimensions.x, this.dimensions.y);
 
         let z = height / Math.tan(this.fov * Math.PI / 360) * 0.5;
-        this.camera.position.set(0, 0, z);
+        let scale;
+
+        if(this.isCameraFixed){
+            this.camera.position.set(0, 0, this.cameraZ);
+            scale = this.cameraZ / z
+        } else {
+            this.camera.position.set(0, 0, z);
+            scale = 1
+        }
 
         this.camera.aspect = this.aspect;
         this.camera.updateProjectionMatrix();
 
         for(let i = 0; i < this.objects.length; i++){
-            this.objects[i].resize(width, height);
+            this.objects[i].resize(width, height, scale);
         }
     }
 

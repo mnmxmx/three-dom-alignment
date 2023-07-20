@@ -4,9 +4,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: (process.env.NODE_ENV === 'production') ? 'production' : "development", //
-    entry: './js/main.js',
+    entry: {
+        demo1: './js/demo1.js',
+        demo2: './js/demo2.js',
+    },
     output: {
-        filename: 'main.min.js',
+        filename: '[name].min.js',
         publicPath: 'http://localhost:3000/',
         path: __dirname + "/dist"
     },

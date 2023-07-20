@@ -20,11 +20,8 @@ void main(){
   vec3 color = mix(uColor1, uColor2, colorFactor);
 
   vec2 alphaUv = vUv - 0.5;
-
   float borderRadius = min(uBorderRadius, min(uResolution.x, uResolution.y) * 0.5);
-
   vec2 offset = vec2(borderRadius) / uResolution;
-
   vec2 alphaXY = smoothstep(vec2(0.5 - offset), vec2(0.5 - offset - 0.001), abs(alphaUv));
   float alpha = min(1.0, alphaXY.x + alphaXY.y);
 

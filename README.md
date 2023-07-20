@@ -1,4 +1,4 @@
-# my-webgl-prototype
+# three-dom-alignment
 
 ## Node.js
 v16.14.0

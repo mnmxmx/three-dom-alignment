@@ -4,7 +4,7 @@ import * as THREE from "three"
 class Controls{
   constructor(){
     this.gui = null
-    this.borderRadius = 10
+    this.borderRadius = 20
   }
 
   init(){

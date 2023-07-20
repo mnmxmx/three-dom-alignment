@@ -1,13 +1,7 @@
-import "./scss/styles.scss";
+import "./demo1/scss/styles.scss";
 
-import EventBus from "./utils/EventBus";
-window.EventBus = EventBus;
-import Artwork from "./modules/Artwork";
-
-
-
+import Artwork from "./demo1/modules/Artwork";
 const $wrapper = document.getElementById("webgl-container");
-
 
 document.fonts.ready.then(() => {
     const artwork = new Artwork({
