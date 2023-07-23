@@ -9,3 +9,5 @@ v16.14.0
   yarn install  
   yarn run dev
 ```
+## License
+MIT License

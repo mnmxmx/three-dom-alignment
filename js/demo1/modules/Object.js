@@ -74,23 +74,6 @@ export default class Object{
     this.uniforms.uResolution.value.set(
       rect.width * scale, rect.height * scale
     );
-
-    // const domHeight = rect.height;
-    // const objectJHeight = 1;
-    
-    // const domWindowAspect = domHeight / windowH;
-    // const targetH = objectJHeight / domWindowAspect;
-
-    // let pixelRatio = objectJHeight / domHeight
-    
-    // let x = (rect.left + rect.width * 0.5) - windowW * 0.5;
-    // x *= -pixelRatio;
-
-    // let y = (rect.top + rect.height * 0.5) - windowH * 0.5;
-    // y *= pixelRatio;
-
-    // var z = targetH / Math.tan(fov * Math.PI / 360) * 0.5;
-    // this.offset.set(x, y, z);
   }
 
   update(delta){
