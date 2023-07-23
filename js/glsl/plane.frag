@@ -1,4 +1,5 @@
 uniform float uTime;
+uniform float uTimeOffset;
 uniform vec2 uResolution;
 uniform float uNoiseScale;
 uniform vec3 uColor1;
@@ -6,17 +7,23 @@ uniform vec3 uColor2;
 uniform float uBorderRadius;
 varying vec2 vUv;
 #pragma glslify: snoise3D = require('./utils/snoise3D.glsl')
+#pragma glslify: snoise4D = require('./utils/snoise4D.glsl')
 
+const float PI = 3.14159265359;
 
 void main(){
   vec2 aspect = uResolution / max(uResolution.x, uResolution.y);
-  float time = uTime * 0.4;
+  float time = uTime;
   vec2 st = vUv;
   st -= -0.5;
   st *= aspect;
-  st *= mix(0.5, 1.0, uNoiseScale);
+  st *= mix(0.5,0.7, uNoiseScale);
   st += 0.5;
-  float colorFactor = snoise3D(vec3(st, time)) * 0.5 + 0.5;
+
+  float loopedTimeX = cos(time * PI * 2.0 + uTimeOffset);
+  float loopedTimeY = sin(time * PI * 2.0 + uTimeOffset);
+
+  float colorFactor = snoise3D(vec3(st, loopedTimeY + loopedTimeX)) * 0.5 + 0.5;
   vec3 color = mix(uColor1, uColor2, colorFactor);
 
   vec2 alphaUv = vUv - 0.5;

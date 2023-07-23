@@ -5,11 +5,11 @@ import fragmentShader from "../../glsl/plane.frag";
 import controls from "./Controls"
 
 const colors = [
-  0x5c6fff,
-  0xc48aff,
-  0xff94bd,
-  0xa9defe,
-  0xfed462
+  0x22A699,
+  0xF2BE22,
+  0xF29727,
+  0xF24C3D,
+  0x090580
 ]
 export default class Object{
   constructor($target){
@@ -24,7 +24,10 @@ export default class Object{
 
     this.uniforms = {
       uTime: {
-        value: Math.random() * 10
+        value: 0
+      },
+      uTimeOffset: {
+        value: Math.random()
       },
       uResolution: {
         value: new THREE.Vector2()
@@ -76,8 +79,8 @@ export default class Object{
     );
   }
 
-  update(delta){
-    this.uniforms.uTime.value += delta;
+  update(time){
+    this.uniforms.uTime.value = time;
     this.$target.style.borderRadius = controls.borderRadius + "px"
     this.uniforms.uBorderRadius.value = controls.borderRadius * this.scale;
   }

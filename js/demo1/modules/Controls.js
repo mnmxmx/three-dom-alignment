@@ -4,12 +4,12 @@ import * as THREE from "three"
 class Controls{
   constructor(){
     this.gui = null
-    this.borderRadius = 20
+    this.borderRadius = 100
   }
 
   init(){
-    this.gui = new GUI();
-    this.gui.add(this, "borderRadius", 0, 100);
+    // this.gui = new GUI();
+    // this.gui.add(this, "borderRadius", 0, 200);
   }
 }
 

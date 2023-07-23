@@ -29,6 +29,7 @@
     "device": "^0.3.12",
     "glslify-import": "^3.1.0",
     "glslify-loader": "^2.0.0",
+    "gsap": "^3.12.2",
     "image-sdf": "^1.0.4",
     "lil-gui": "^0.18.0",
     "mini-css-extract-plugin": "^1.3.3",
