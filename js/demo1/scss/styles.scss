@@ -33,11 +33,19 @@ body, html{
       box-sizing: border-box;
       position: relative;
       will-change: width, height;
+
+      .color2 &{
+        border: 4px solid #00f;
+      }
       p{
         font-size: 3rem;
         color: #000;
         font-family: 'Roboto', sans-serif;
         text-transform: uppercase;
+
+        .color2 &{
+          color: #00f;
+        }
         // margin-left: 5%;
         // margin-top: 4%;
       }

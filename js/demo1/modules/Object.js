@@ -4,15 +4,36 @@ import vertexShader from "../../glsl/plane.vert";
 import fragmentShader from "../../glsl/plane.frag";
 import controls from "./Controls"
 
-const colors = [
+const colors1 = [
   0x22A699,
   0xF2BE22,
   0xF29727,
   0xF24C3D,
   0x090580
 ]
+
+const colors2 = [
+  0x5c6fff,
+  0xc48aff,
+  0xff94bd,
+  0xa9defe,
+  0xfed462
+]
 export default class Object{
   constructor($target){
+    let colors = colors1;
+    const searchParams = new URLSearchParams(window.location.search)
+
+    let type = searchParams.get("type");
+    
+
+    if(type == "color1"){
+      colors = colors1
+    } else if(type == "color2"){
+      colors = colors2
+      document.body.classList.add("color2");
+    }
+
     this.$target = $target
 
     const colorIndex = [0, 1, 2, 3, 4]
